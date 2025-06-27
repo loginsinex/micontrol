@@ -1,5 +1,5 @@
 /*
-	MI Control Utility â€” v1.2.5 [public version]
+	MI Control Utility — v1.2.5 [public version]
 	Copyright (C) 2025 ALXR aka loginsin
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
@@ -51,9 +51,19 @@ void CPageTouchpadDlg::OnButton(USHORT uId)
 {
     switch (uId)
     {
-    case IDB_TOUCHPAD_ON: EnableTouchPad(true); break;
-    case IDB_TOUCHPAD_OFF: EnableTouchPad(false); break;
+        case IDB_TOUCHPAD_ON:
+        {
+            EnableTouchPad(true);
+            SendMessage(*Parent(), WM_CUSTOM_SHOW_SPLASH, IDB_TOUCHPAD_ON, 0);
+        }
+        break;
+        case IDB_TOUCHPAD_OFF: 
+        {
+            EnableTouchPad(false);
+            SendMessage(*Parent(), WM_CUSTOM_SHOW_SPLASH, IDB_TOUCHPAD_OFF, 0);
+        }
     }
+
 }
 
 bool CPageTouchpadDlg::GetLineColor(COLORREF& clr, UINT& iconId) const
