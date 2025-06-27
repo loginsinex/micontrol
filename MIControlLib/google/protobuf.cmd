@@ -41,14 +41,14 @@ exit /b 0
 
 :makedebug
 cd %~dp0/protobuf_build_debug 
-cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_CXX_STANDARD=20 -DCMAKE_INSTALL_PREFIX=%~dp0\dprotobuf %~dp0\protobuf_src\cmake
+cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_STANDARD=20 -DCMAKE_INSTALL_PREFIX=%~dp0\dprotobuf %~dp0\protobuf_src\cmake
 msbuild protobuf.sln -p:Configuration=Debug -m:15
 cmake --build . --config Debug --target INSTALL
 exit /b 0
 
 :makerelease
 cd %~dp0/protobuf_build_release
-cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_CXX_STANDARD=20 -DCMAKE_INSTALL_PREFIX=%~dp0\rprotobuf %~dp0\protobuf_src\cmake
+cmake -G "Visual Studio 17 2022" -A x64 -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_CXX_STANDARD=20 -DCMAKE_INSTALL_PREFIX=%~dp0\rprotobuf %~dp0\protobuf_src\cmake
 msbuild protobuf.sln -p:Configuration=Release -m:15
 cmake --build . --config Release --target INSTALL
 exit /b 0
